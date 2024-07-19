@@ -13,9 +13,79 @@ Edge Functions are framework-agnostic, but are also used behind the scenes to ru
 There are advatanges to using Edge Functions directly, such as the ability to access & transform the response body.
 
 [See more examples](https://edge-functions-examples.netlify.app)
+
+<script type="text/javascript">
+    window.ymConfig = {"bot":"x1697634451789","host":"https://r5.cloud.yellow.ai",
+    "payload": {
+            "language": getLanguageFromHost()
+        },
+        "theme": {
+        "primaryColor":"#c09a53",
+        "secondaryColor":"#c09a53",
+        "botBubbleBackgroundColor":"#dee2e6"
+    }};
+    function getLanguageFromHost() {
+        var host = window.location.href;
+        var language = "en";
+
+        if (host.includes("cz")) {
+            language = "cs";
+        } else if (host.includes("sk")) {
+            language = "sk";
+        }
+
+        return language;
+    }
+    (function() {
+        var w = window,
+            ic = w.YellowMessenger;
+        if ("function" === typeof ic) ic("reattach_activator"), ic("update", ymConfig);
+        else {
+            var d = document,
+                i = function() { i.c(arguments) };
+            function l() {
+                var e = d.createElement("script");
+                e.type = "text/javascript", e.async = !0, e.src = "https://cdn.yellowmessenger.com/plugin/widget-v2/latest/dist/main.min.js";
+                var t = d.getElementsByTagName("script")[0];
+                t.parentNode.insertBefore(e, t);
+                // Ensure styles are applied after script load
+                e.onload = function() {
+                    applyCustomStyles();
+                };
+            }
+            i.q = [], i.c = function(e) { i.q.push(e) };
+            w.YellowMessenger = i;
+            w.attachEvent ? w.attachEvent("onload", l) : w.addEventListener("load", l, !1);
+        }
+    })();
+
+    function applyCustomStyles() {
+        var frameDocument = window.frames && window.frames.ymIframe && window.frames.ymIframe.document;
+            const newStyleElement = frameDocument.createElement('style');
+            newStyleElement.innerHTML = \`
+                #chatBoxMainContainer button.option {
+                    background: #c09a53 !important;
+                    color: #ffffff !important;
+                }
+                .new-home-button.hideInput {
+                    background: #165fa5 !important;
+                    color: #ffffff !important;
+                }
+                .home-button-text-content{
+                    color: #ffffff !important;
+                }
+
+                #chatDetails .title-parent .title {
+                    color: #ffffff !important;
+                }
+            \`;
+            frameDocument.head.appendChild(newStyleElement);
+    }
+</script>
 `;
 ---
 
 <Layout title="Fallback">
     <Markdown content={explainer} />
 </Layout>
+
